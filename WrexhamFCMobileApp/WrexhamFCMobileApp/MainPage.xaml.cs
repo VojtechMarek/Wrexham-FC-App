@@ -124,13 +124,13 @@ namespace WrexhamFCMobileApp
             }
         }
 
-        //void proxy_GetAllNewsCompleted(object sender, WrexhamFCServiceReference.GetAllNewsCompletedEventArgs e)
-        //{
-        //    if (e.Result != null)
-        //    {
-        //        lbxNews.ItemsSource = e.Result;
-        //    }
-        //}
+        void proxy_GetAllNewsCompleted(object sender, WrexhamFCServiceReference.GetAllNewsCompletedEventArgs e)
+        {
+            if (e.Result != null)
+            {
+                lbxNews.ItemsSource = e.Result;
+            }
+        }
 
 //kliknutí na učitý textblock v main page posune aplikaci na příslušnou pivot položku
         private void txbNews_Tap(object sender, System.Windows.Input.GestureEventArgs e)

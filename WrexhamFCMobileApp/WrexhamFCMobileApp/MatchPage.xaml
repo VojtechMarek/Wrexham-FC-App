@@ -1,0 +1,137 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="WrexhamFCMobileApp.MatchPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Pivot Control-->
+        <controls:Pivot Title="WREXHAM FC APP - Match Details" Loaded="MatchPage_Loaded" Name="pvtMatchDetail">
+            <!--Pivot item one-->
+            <controls:PivotItem Header="Summary">
+              <StackPanel>
+                   <TextBlock Text="{Binding MatchDate, StringFormat='{}{0:dd/MM/yyyy hh:mm tt}'}" FontSize="18" Margin="12,-20,0,10" Name="txbDate" TextAlignment="Left" FontStyle="Italic" /> 
+                    <StackPanel x:Name="stpSummaryTeamName" Background="Transparent" Orientation="Horizontal">
+                    
+                    <TextBlock x:Name="HomeTeam" Text="{Binding HomeTeam}" Margin="0,0,0,0" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Padding="12,0,0,0" Width="192" Height="Auto" TextWrapping="Wrap" />
+                    <TextBlock x:Name="HomeScore" Text="{Binding HomeScore}" Margin="0,0,0,0" FontSize="22" HorizontalAlignment="Right" VerticalAlignment="Top" FontWeight="Bold" Padding="0" Width="35" TextAlignment="Right" />
+                    <TextBlock Text="-" Margin="0,0,0,0" FontSize="22" Width="15" TextAlignment="Center" Visibility="Collapsed" Name="txbDash" />
+                    <TextBlock x:Name="AwayScore" Text="{Binding AwayScore}" Margin="0,0,0,0" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Padding="0" Width="35" />
+                    <TextBlock x:Name="AwayTeam" Text="{Binding AwayTeam}" Margin="0,0,0,0" FontSize="22" HorizontalAlignment="Right" VerticalAlignment="Top" FontWeight="Bold" Padding="0,0,20,0" Width="192" TextAlignment="Right" TextWrapping="Wrap" />
+                   </StackPanel> 
+                  
+                    <ListBox x:Name="lbxSummary" Margin="0,30,-12,0" ItemsSource="{Binding}" HorizontalAlignment="Left">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,0,20" Orientation="Horizontal" FlowDirection="LeftToRight">
+                                    
+                                    <TextBlock Text="{Binding Minute}" FontSize="22" Margin="12,0,0,0" Width="30" Name="txbMinute" TextAlignment="Right" />
+                                    <TextBlock Text="'" Margin="0,0,0,0" FontSize="22" Width="5" TextAlignment="Left" Visibility="Visible" Name="txbMin" />
+                                    <TextBlock Text="{Binding EventName}" FontSize="22" Margin="15,0,10,0" FontWeight="Bold" Width="Auto" TextAlignment="Left" TextWrapping="Wrap" />
+                                    <TextBlock Text="(" Margin="0,0,0,0" FontSize="22" Width="Auto" TextAlignment="Left" Visibility="Visible" />
+                                    <TextBlock Text="{Binding Name}" FontSize="22" Width="Auto" IsHitTestVisible="False" TextWrapping="Wrap" />
+                                    <TextBlock Text=", " Margin="0,0,0,0" FontSize="22" Width="Auto" TextAlignment="Left" Visibility="Visible" />
+                                    <TextBlock Text="{Binding Team}" FontSize="22" Width="Auto" TextWrapping="Wrap" />
+                                    <TextBlock Text=")" Margin="0,0,12,0" FontSize="22" Width="Auto" TextAlignment="Left" Visibility="Visible" TextWrapping="Wrap" />
+                                  
+                                    
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+
+            </controls:PivotItem>
+
+            <!--Pivot item two-->
+                        <controls:PivotItem Header="Statistics">
+                <!--<ListBox x:Name="lbxFixtures" Margin="0,0,-12,0" ItemsSource="{Binding}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>-->
+                <StackPanel Name="stpStatistics">
+                    <TextBlock Text="{Binding MatchDate, StringFormat='{}{0:dd/MM/yyyy hh:mm tt}'}" FontSize="18" Margin="12,-20,0,10" Name="txbDate1" TextAlignment="Left" FontStyle="Italic" />
+                    <StackPanel x:Name="stpTeamNameS" Background="Transparent" Orientation="Horizontal">
+                        <TextBlock x:Name="txbHomeTeamS" Text="{Binding HomeTeam}" Margin="0,0,0,0" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Padding="12,0,0,0" Width="192" Height="Auto" TextWrapping="Wrap" />
+                        <TextBlock x:Name="txbHomeScoreS" Text="{Binding HomeScore}" Margin="0,0,0,0" FontSize="22" HorizontalAlignment="Right" VerticalAlignment="Top" FontWeight="Bold" Padding="0" Width="35" TextAlignment="Right" />
+                        <TextBlock Text="-" Margin="0,0,0,0" FontSize="22" Width="15" TextAlignment="Center" Visibility="Visible" Name="txbDashS" />
+                        <TextBlock x:Name="txbAwayScoreS" Text="{Binding AwayScore}" Margin="0,0,0,0" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Padding="0" Width="35" />
+                        <TextBlock x:Name="txbAwayTeamS" Text="{Binding AwayTeam}" Margin="0,0,0,0" FontSize="22" HorizontalAlignment="Right" VerticalAlignment="Top" FontWeight="Bold" Padding="0,0,20,0" Width="192" TextAlignment="Right" TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel Margin="0,30,0,10" Orientation="Horizontal" DataContext="{Binding}" Name="stpStatistics1" Visibility="Visible">
+
+                                <TextBlock Text="{Binding HomePossession}" FontSize="22" Margin="0,0,0,0" Width="145" TextAlignment="Center" />
+                                <TextBlock Text="Possession" Margin="0,0,0,0" FontSize="22" Visibility="Visible" Name="txbPoss" Width="165" TextAlignment="Center" />
+                                <TextBlock Text="{Binding AwayPossession}" FontSize="22" Margin="0,0,10,0" Width="145" TextAlignment="Center" />
+ 
+                            </StackPanel>
+                    <StackPanel Margin="0,10,0,10" Orientation="Horizontal" DataContext="{Binding}" Name="stpStatistics2" Visibility="Visible">
+
+                        <TextBlock Text="{Binding HomeGoalAttempts}" FontSize="22" Margin="0,0,0,0" Width="145" TextAlignment="Center" />
+                        <TextBlock Text="Goal Attempts" Margin="0,0,0,0" FontSize="22" Visibility="Visible" Width="165" TextAlignment="Center" />
+                        <TextBlock Text="{Binding AwayGoalAttempts}" FontSize="22" Margin="0,0,10,0" Width="145" TextAlignment="Center" />
+
+                    </StackPanel>
+                    <StackPanel Margin="0,10,0,10" Orientation="Horizontal" DataContext="{Binding}" Name="stpStatistics3" Visibility="Visible">
+
+                        <TextBlock Text="{Binding HomeShotsOnGoal}" FontSize="22" Margin="0,0,0,0" Width="145" TextAlignment="Center" />
+                        <TextBlock Text="Shots on Goal" Margin="0,0,0,0" FontSize="22" Visibility="Visible" Width="165" TextAlignment="Center" />
+                        <TextBlock Text="{Binding AwayShotsOnGoal}" FontSize="22" Margin="0,0,10,0" Width="145" TextAlignment="Center" />
+
+                    </StackPanel>
+                    <StackPanel Margin="0,10,0,10" Orientation="Horizontal" DataContext="{Binding}" Name="stpStatistics4" Visibility="Visible">
+
+                        <TextBlock Text="{Binding HomeShotsOffGoal}" FontSize="22" Margin="0,0,0,0" Width="145" TextAlignment="Center" />
+                        <TextBlock Text="Shots off Goal" Margin="0,0,0,0" FontSize="22" Visibility="Visible" Width="165" TextAlignment="Center" />
+                        <TextBlock Text="{Binding AwayShotsOffGoal}" FontSize="22" Margin="0,0,10,0" Width="145" TextAlignment="Center" />
+
+                    </StackPanel>
+                    <StackPanel Margin="0,10,0,10" Orientation="Horizontal" DataContext="{Binding}" Name="stpStatistics5" Visibility="Visible">
+
+                        <TextBlock Text="{Binding HomeFreeKicks}" FontSize="22" Margin="0,0,0,0" Width="145" TextAlignment="Center" />
+                        <TextBlock Text="Free Kicks" Margin="0,0,0,0" FontSize="22" Visibility="Visible" Width="165" TextAlignment="Center" />
+                        <TextBlock Text="{Binding AwayFreeKicks}" FontSize="22" Margin="0,0,10,0" Width="145" TextAlignment="Center" />
+
+                    </StackPanel>
+                    <StackPanel Margin="0,10,0,10" Orientation="Horizontal" DataContext="{Binding}" Name="stpStatistics6" Visibility="Visible">
+
+                        <TextBlock Text="{Binding HomeCornerKicks}" FontSize="22" Margin="0,0,0,0" Width="145" TextAlignment="Center" />
+                        <TextBlock Text="Corner Kicks" Margin="0,0,0,0" FontSize="22" Visibility="Visible" Width="165" TextAlignment="Center" />
+                        <TextBlock Text="{Binding AwayCornerKicks}" FontSize="22" Margin="0,0,10,0" Width="145" TextAlignment="Center" />
+
+                    </StackPanel>
+                    <StackPanel Margin="0,10,0,10" Orientation="Horizontal" DataContext="{Binding}" Name="stpStatistics7" Visibility="Visible">
+
+                        <TextBlock Text="{Binding HomeGoalKeeperSaves}" FontSize="22" Margin="0,0,0,0" Width="144" TextAlignment="Center" />
+                        <TextBlock Text="Goal Keepr Saves" Margin="0,0,0,0" FontSize="22" Visibility="Visible" Width="167" TextAlignment="Center" />
+                        <TextBlock Text="{Binding AwayGoalKeeperSaves}" FontSize="22" Margin="0,0,10,0" Width="144" TextAlignment="Center" />
+
+                    </StackPanel>
+                    <StackPanel Margin="0,10,0,10" Orientation="Horizontal" DataContext="{Binding}" Name="stpStatistics8" Visibility="Visible">
+
+                        <TextBlock Text="{Binding HomeFouls}" FontSize="22" Margin="0,0,0,0" Width="145" TextAlignment="Center" />
+                        <TextBlock Text="Fouls" Margin="0,0,0,0" FontSize="22" Visibility="Visible" Width="165" TextAlignment="Center" />
+                        <TextBlock Text="{Binding AwayFouls}" FontSize="22" Margin="0,0,10,0" Width="145" TextAlignment="Center" />
+
+                    </StackPanel>
+                    <!--</DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>-->
+                </StackPanel>
+            </controls:PivotItem>
+
+        </controls:Pivot>
+    </Grid>
+    
+</phone:PhoneApplicationPage>

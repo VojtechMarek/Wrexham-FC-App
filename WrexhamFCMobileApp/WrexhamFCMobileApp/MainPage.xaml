@@ -1,0 +1,138 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="WrexhamFCMobileApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768" 
+    d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Pivot Control-->
+        <controls:Pivot Title="WREXHAM FC APP" Name="PivotPage">
+            <!--Pivot item one-->
+            <controls:PivotItem Header="Main Menu" Name="pimMainMenu">
+                <!--Double line list with text wrapping-->
+                <ListBox Name="lbxMainMenu" FontSize="{StaticResource PhoneFontSizeLarge}" Margin="12,0" ItemsSource="{Binding}" HorizontalContentAlignment="Center">
+                    <TextBlock Text="News" Tap="txbNews_Tap" Padding="0,0,0,30" FontSize="36" HorizontalAlignment="Stretch" />
+                    <TextBlock Text="Fixtures" Tap="txbFixtures_Tap" Padding="0,0,0,30" FontSize="36" />
+                    <TextBlock Text="Tickets" Tap="txbTickets_Tap" Padding="0,0,0,30" FontSize="36" />
+                    <TextBlock Text="Players" Tap="txbPlayers_Tap" Padding="0,0,0,30" FontSize="36" />
+                    <TextBlock Text="League table" Tap="txbLeagueTable_Tap" FontSize="36" FontWeight="Normal"></TextBlock>
+                </ListBox>
+            </controls:PivotItem>
+ 
+            <!--Pivot item two-->
+            <controls:PivotItem Name="pimNews" Header="News"> 
+                <!--Triple line list no text wrapping-->
+                    <ListBox x:Name="lbxNews" Margin="0,0,-12,0" ItemsSource="{Binding}" Tap="lbxNews_Tap">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                                <StackPanel Orientation="Vertical" Margin="10,0,0,15" HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding Title}" FontSize="25" FontWeight="Bold" TextWrapping="Wrap" />
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                                        <TextBlock Text="Author:" FontSize="18" Margin="0,0,10,0" FontStyle="Italic" />
+                                        <TextBlock Text="{Binding Author}" FontSize="18" FontStyle="Italic" />
+                                        <TextBlock Text="," Margin="0,0,10,0" FontSize="18" FontStyle="Italic" />
+                                        <TextBlock Text="{Binding DateTime, StringFormat='{}{0:dd/MM/yyyy hh:mm tt}'}" FontSize="18" FontStyle="Italic" />                                    
+                                    </StackPanel>
+                                </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </controls:PivotItem>
+            <!--Pivot item three-->
+            <controls:PivotItem Header="Fixtures" Name="pimFixtures">
+                <!--Triple line list no text wrapping-->
+                <Grid>
+                    <RadioButton BorderThickness="1" Content="All" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="True" Name="rbtnAll" Checked="rbtnAll_Checked" />
+                    <RadioButton BorderThickness="1" Content="Past" VerticalAlignment="Top" HorizontalAlignment="Center" Name="rbtnPast" Checked="rbtnPast_Checked" />
+                    <RadioButton BorderThickness="1" Content="Future" VerticalAlignment="Top" HorizontalAlignment="Right" Name="rbtnFuture" Checked="rbtnFuture_Checked" />
+                    <ListBox x:Name="lbxFixtures" Margin="0,80,-12,0" ItemsSource="{Binding}" Tap="lbxFixtures_Tap">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,0,0,17" Orientation="Horizontal">
+                              
+                                <TextBlock Text="{Binding HomeTeam}" FontSize="18" Margin="0,0,10,0" />                                
+                                <TextBlock Text="vs" Margin="0,0,10,0" FontSize="18" />
+                                <TextBlock Text="{Binding AwayTeam}" FontSize="18" />
+                                <TextBlock Text="{Binding MatchDate, StringFormat='{}{0:dd/MM/yyyy hh:mm tt}'}" FontSize="18" Margin="10,0,0,0" />
+                                
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                </Grid>
+            </controls:PivotItem>
+            <!--Pivot item four-->
+            <controls:PivotItem Header="Tickets" Name="pimTickets">
+                <!--Triple line list no text wrapping-->
+                <StackPanel>
+             
+                    <TextBlock Text="Select a fixture, on which you would like to book the tickets:" Margin="12,0,10,0" FontSize="22" TextWrapping="Wrap" />
+                 
+                <ListBox x:Name="lbxTickets" Margin="12,20,-12,0" ItemsSource="{Binding}" Tap="lbxTickets_Tap">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,0,17" Orientation="Horizontal">
+
+                                    <TextBlock Text="{Binding HomeTeam}" FontSize="18" Margin="0,0,10,0" />
+                                    <TextBlock Text="vs" Margin="0,0,10,0" FontSize="18" />
+                                    <TextBlock Text="{Binding AwayTeam}" FontSize="18" />
+                                    <TextBlock Text="{Binding MatchDate, StringFormat='{}{0:dd/MM/yyyy hh:mm tt}'}" FontSize="18" Margin="10,0,0,0" />
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+               
+            </controls:PivotItem>
+            <!--Pivot item five-->            
+            <controls:PivotItem Header="Players" Name="pimPlayers">
+                <!--Triple line list no text wrapping-->
+                <ListBox Name="lbxPlayers" FontSize="{StaticResource PhoneFontSizeLarge}" Margin="12,0" ItemsSource="{Binding}" HorizontalContentAlignment="Center">
+                    <TextBlock Text="List of Players" Tap="txbListOfPlayers_Tap" Padding="0,0,0,30" FontSize="36" HorizontalAlignment="Stretch" />
+                    <TextBlock Text="Injured players" Tap="txbInjuredPlayers_Tap" Padding="0,0,0,30" FontSize="36" />
+                    <TextBlock Text="Statistics" Tap="txbStatistics_Tap" Padding="0,0,0,30" FontSize="36" />
+                </ListBox>
+            </controls:PivotItem>
+            <!--Pivot item six-->
+            <controls:PivotItem Header="League Table" Name="pimLeagueTable">
+                <!--Triple line list no text wrapping-->
+                <ListBox Name="lbxLeagueTable" FontSize="{StaticResource PhoneFontSizeLarge}" Margin="12,0" ItemsSource="{Binding}" HorizontalContentAlignment="Center" Tap="lbxLeagueTable_Tap">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,0,0,17" Orientation="Horizontal">
+                                <TextBlock Text="{Binding Team}" Padding="0,0,0,30" FontSize="36" HorizontalAlignment="Stretch" />
+                                <TextBlock Text="{Binding Points}" Padding="0,0,0,30" FontSize="36" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </controls:PivotItem>
+        </controls:Pivot>
+    </Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>

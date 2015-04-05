@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WrexhamFCService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WrexhamFCService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:1633/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Data.Linq" />
+  <xs:complexType name="ArrayOfTableNews">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TableNews" nillable="true" type="tns:TableNews" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTableNews" nillable="true" type="tns:ArrayOfTableNews" />
+  <xs:complexType name="TableNews">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Author" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IDNews" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TableNews" nillable="true" type="tns:TableNews" />
+  <xs:complexType name="ArrayOfTableNewsInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TableNewsInfo" nillable="true" type="tns:TableNewsInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTableNewsInfo" nillable="true" type="tns:ArrayOfTableNewsInfo" />
+  <xs:complexType name="TableNewsInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Author" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IDNews" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TableNewsInfo" nillable="true" type="tns:TableNewsInfo" />
+  <xs:complexType name="ArrayOfTableMatchesInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TableMatchesInfo" nillable="true" type="tns:TableMatchesInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTableMatchesInfo" nillable="true" type="tns:ArrayOfTableMatchesInfo" />
+  <xs:complexType name="TableMatchesInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AwayScore" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AwayTeam" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HomeScore" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HomeTeam" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDMatch" type="xs:int" />
+      <xs:element minOccurs="0" name="MatchDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TableMatchesInfo" nillable="true" type="tns:TableMatchesInfo" />
+  <xs:complexType name="TableMatches">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AwayCornerKicks" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AwayFouls" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AwayFreeKicks" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AwayGoalAttempts" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AwayGoalKeeperSaves" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AwayPossession" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AwayScore" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AwayShotsOffGoal" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AwayShotsOnGoal" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AwayTeam" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HomeCornerKicks" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HomeFouls" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HomeFreeKicks" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HomeGoalAttempts" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HomeGoalKeeperSaves" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HomePossession" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HomeScore" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HomeShotsOffGoal" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HomeShotsOnGoal" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HomeTeam" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDMatch" type="xs:int" />
+      <xs:element minOccurs="0" name="MatchDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TableMatches" nillable="true" type="tns:TableMatches" />
+  <xs:complexType name="ArrayOfeventsByMatch">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="eventsByMatch" nillable="true" type="tns:eventsByMatch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfeventsByMatch" nillable="true" type="tns:ArrayOfeventsByMatch" />
+  <xs:complexType name="eventsByMatch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AwayTeam" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HomeTeam" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDEvent" type="xs:int" />
+      <xs:element minOccurs="0" name="IDMatch" type="xs:int" />
+      <xs:element minOccurs="0" name="MatchDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Minute" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlayerDressNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="Team" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="eventsByMatch" nillable="true" type="tns:eventsByMatch" />
+  <xs:complexType name="ArrayOfTablePlayers">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TablePlayers" nillable="true" type="tns:TablePlayers" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTablePlayers" nillable="true" type="tns:ArrayOfTablePlayers" />
+  <xs:complexType name="TablePlayers">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Age" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DressNumber_ID_" type="xs:int" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Goals" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Injured" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Data.Linq" minOccurs="0" name="Photo" nillable="true" type="q1:Binary" />
+      <xs:element minOccurs="0" name="Position" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RedCards" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="YellowCards" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TablePlayers" nillable="true" type="tns:TablePlayers" />
+  <xs:complexType name="ArrayOfTableStandings">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TableStandings" nillable="true" type="tns:TableStandings" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTableStandings" nillable="true" type="tns:ArrayOfTableStandings" />
+  <xs:complexType name="TableStandings">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Draws" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="GoalsConceded" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="GoalsScored" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Losses" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MatchesPlayed" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Points" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Team" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Wins" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TableStandings" nillable="true" type="tns:TableStandings" />
+</xs:schema>
